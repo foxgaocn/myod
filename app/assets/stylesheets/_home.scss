@@ -1,0 +1,55 @@
+section {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  table{
+    width: 100%;
+    text-align: center;
+  }
+  header{
+    text-align: center;
+    background: #100;
+    color: #dedcb9;
+    padding: 0.5em 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+  }
+  section{
+    padding-top: 8em;
+    overflow-y:auto;
+    height: 400px;
+  }
+  .icon i{
+    display: block;
+    font-size: 24px;
+    line-height: 50px; width: 50px;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .icon a{
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+  }
+
+  .icon p{
+    font-size: 12px;
+    color: #3b5997;
+    margin-top: -5px;
+  }
+
+  .dd{ background-color: #00acf0;}
+  .df{ background-color: #3b5997;}
+  .ds{ background-color: #db4f48;}
+  .dg{ background-color: #447397;}
+  .sp{ background-color: #b0ad5e;}
+  .gk{ background-color: #5db0a1;}
+  .cw{ background-color: #d12e2e;}
+  .ls{ background-color: #007db8;}
+}
