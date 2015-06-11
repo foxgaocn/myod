@@ -1,5 +1,5 @@
 <header>
-  <a href='#'><i class="fa fa-home home"></i> </a>
+  <a href='#/home'><i class="fa fa-home home"></i> </a>
   <a href=''><i class="fa fa-cog cog"></i></a>
 </header>
 <section>
@@ -45,7 +45,7 @@
       </td>
       <td>
         <div class='icon'>
-          <a href='#'><i class="fa fa-cubes sp"></i></a>
+          <a href='/#/signed_out'><i class="fa fa-cubes sp"></i></a>
           <p>商品管理</p>
         </div>
       </td>
@@ -53,6 +53,14 @@
         <div class='icon'>
           <a href='#'><i class="fa fa-users gk"></i></a>
           <p>顾客管理</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class='icon'>
+          <a href='#' ng-click='signout()'><i class="fa fa-sign-out tc"></i></a>
+          <p>退出系统</p>
         </div>
       </td>
     </tr>

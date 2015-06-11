@@ -2,6 +2,9 @@
 
 /* App Module */
 
+angular.module('myodControllers',['autocomplete']);
+angular.module('myodServices',[]);
+
 var myod = angular.module('myod', [
   'ngRoute',
   'ngResource',
@@ -21,6 +24,13 @@ myod.config(['$routeProvider',
       when('/order', {
         templateUrl: '../templates/order.html',
         controller: 'OrderCtrl'
+      }).
+      when('/signed_out', {
+        controller : function(){
+            window.location.replace('/users/sign_in');
+          }, 
+        template : "<div></div>"
+
       }).
       otherwise({
         redirectTo: '/home'
