@@ -1,4 +1,4 @@
-var ctrls = angular.module('myodControllers',[]);
+var ctrls = angular.module('myodControllers',['autocomplete']);
 
 ctrls.controller('HomeCtrl', ['$scope',
   function($scope) {

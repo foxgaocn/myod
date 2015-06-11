@@ -4,7 +4,8 @@
 
 var myod = angular.module('myod', [
   'ngRoute',
-  "ui.bootstrap",
+  'ngResource',
+  'ui.bootstrap',
   'myodControllers',
   'myodServices'
 ]);
