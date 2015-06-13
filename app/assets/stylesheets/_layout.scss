@@ -7,6 +7,11 @@ body{
   font-family: "Helvetica Neue";
   font-weight: lighter;
 }
+
+.center{
+  text-align: center;
+}
+
 .myod{
   width: 100%;
   margin: 0 auto;
@@ -64,10 +69,6 @@ body{
       .btn-success{
         width: 60%;
       }
-    }
-
-    .center{
-      text-align: center;
     }
   }
 }

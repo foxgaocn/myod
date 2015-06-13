@@ -3,8 +3,14 @@
   <a href=''><i class="fa fa-cog cog"></i></a>
 </header>
 <section>
-  产品: <autocomplete ng-model="product" data="products" on-type="updateProducts" on-select='setProductId'></autocomplete>
-  <h1> order </h1>
-  <h1> order </h1>
+  <br/>
+  <form>
+    <label>产品: </label>
+    <autocomplete ng-model="product" data="products" on-type="updateProducts" on-select='setProductId' attr-input-class="form-control"></autocomplete>
+    <label>数量: </label>
+    <input type="number" value="1" class="form-control">
+    <label>客户: </label>
+    <input class="form-control">
+  </form>
 </section>
 
