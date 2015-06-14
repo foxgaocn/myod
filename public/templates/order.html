@@ -3,14 +3,35 @@
   <a href=''><i class="fa fa-cog cog"></i></a>
 </header>
 <section>
-  <br/>
-  <form>
-    <label>产品: </label>
-    <autocomplete ng-model="product" data="products" on-type="updateProducts" on-select='setProductId' attr-input-class="form-control"></autocomplete>
+  <div class='center'>
+    <h3>{{title}}</h3>
+  </div>
+  <hr/>
+  <form novalidate>
+    <label>商品名: </label>
+    <autocomplete ng-model="order.product_name" data="products" on-type="updateProducts" on-select='selectProduct' attr-input-class="form-control" attr-placeholder=""></autocomplete>
     <label>数量: </label>
-    <input type="number" value="1" class="form-control">
+    <input type="number" ng-model="order.quantity" class="form-control" required>
     <label>客户: </label>
-    <input class="form-control">
+    <div class="row">
+      <div class="col-xs-9">
+        <select ng-model="order.client_id"
+            ng-options="client.id as client.name for client in clients" class="form-control" required>
+        </select>
+      </div>
+      <div class="col-xs-3">
+        <div class="btn btn-primary" ng-click="newClient()">新客户</div>
+      </div>
+    </div>
+    <label>状态</label>
+      <select ng-model="order.status"
+          ng-options="status.code as status.title for status in valid_statuses" class="form-control" required>
+      </select>
+    <br/>
+    <br/>
+    <div class='center'>
+      <div class="btn btn-success" type='submit' ng-click='submit($event)'> 确定 </div>
+    </div>
   </form>
 </section>
 
