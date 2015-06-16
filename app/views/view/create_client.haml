@@ -1,0 +1,15 @@
+.modal-header
+  %h3.modal-title 
+.modal-body
+  %form{:novalidate => ""}
+    %label 客户名:
+    %input.form-control{"ng-model" => "client.name", :required => "", :type => "text"}/
+    %label 地址:
+    %input.form-control{"ng-model" => "client.address", :type => "text"}/
+    %label 电话:
+    %input.form-control{"ng-model" => "client.phone", :type => "number"}/
+    %label 身份证号码:
+    %input.form-control{"ng-model" => "client.sid", :type => "number"}/
+.modal-footer
+  %button.btn.btn-primary{"ng-click" => "ok($event)"} OK
+  %button.btn.btn-warning{"ng-click" => "cancel()"} Cancel

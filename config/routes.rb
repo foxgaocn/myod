@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'info', on: :collection
   end
 
+  resources :view, only: [:show]
+
   get 'main/try_it' => 'main#try_it', as: :try_it
 
   # Example of regular route:

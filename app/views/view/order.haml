@@ -1,0 +1,23 @@
+=render 'header'
+%section
+  .center{:class => ""}
+    %h4
+      
+      %h4
+  %form{:novalidate => ""}
+    %label 商品名:
+    %autocomplete{"attr-input-class" => "form-control", "attr-placeholder" => "", :data => "products", "ng-model" => "order.product_name", "on-select" => "selectProduct", "on-type" => "updateProducts"}
+    %label 数量:
+    %input.form-control{"ng-model" => "order.quantity", :required => "", :type => "number"}/
+    %label 客户:
+    .row
+      .col-xs-9
+        %select.form-control{"ng-model" => "order.client_id", "ng-options" => "client.id as client.name for client in clients", :required => ""}
+      .col-xs-3
+        .btn.btn-primary{"ng-click" => "newClient()"} 新客户
+    %label 状态
+    %select.form-control{"ng-model" => "order.status", "ng-options" => "status.code as status.title for status in valid_statuses", :required => ""}
+    %br/
+    %br/
+    .center
+      .btn.btn-success{"ng-click" => "submit($event)", :type => "submit"} 确定

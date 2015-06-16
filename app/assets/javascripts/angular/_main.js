@@ -25,12 +25,16 @@ myod.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/home', {
-        templateUrl: '../templates/home.html',
+        templateUrl: '/view/home',
         controller: 'HomeCtrl'
       }).
       when('/order', {
-        templateUrl: '../templates/order.html',
+        templateUrl: '/view/order',
         controller: 'OrderCtrl'
+      }).
+      when('/buy', {
+        templateUrl: '/view/buy',
+        controller: 'BuyCtrl'
       }).
       when('/signed_out', {
         controller : function(){

@@ -1,0 +1,51 @@
+=render 'header'
+%section
+  %table
+    %tr
+      %td
+        .icon
+          %a{"ng-href" => "#/order"}
+            %i.fa.fa-pencil-square-o.dd
+          %p 订单录入
+      %td
+        .icon
+          %a{:href => "#/buy"}
+            %i.fa.fa-shopping-cart.dg
+          %p 待购商品
+      %td
+        .icon
+          %a{:href => "#"}
+            %i.fa.fa-truck.df
+          %p 待发货
+      %td
+        .icon
+          %a{:href => "#"}
+            %i.fa.fa-usd.ds
+          %p 待收款
+    %tr
+      %td
+        .icon
+          %a{:href => "#"}
+            %i.fa.fa-table.ls
+          %p 历史订单
+      %td
+        .icon
+          %a{:href => "#"}
+            %i.fa.fa-bar-chart.cw
+          %p 财务报表
+      %td
+        .icon
+          %a{:href => "/#/signed_out"}
+            %i.fa.fa-cubes.sp
+          %p 商品管理
+      %td
+        .icon
+          %a{:href => "#"}
+            %i.fa.fa-users.gk
+          %p 顾客管理
+    %tr
+      %td
+        .icon
+          %a{:href => "#", "ng-click" => "signout()"}
+            %i.fa.fa-sign-out.tc
+          %p 退出系统

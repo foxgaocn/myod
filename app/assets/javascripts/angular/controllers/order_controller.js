@@ -45,17 +45,16 @@ angular.module('myodControllers')
       $scope.newClient = function(){
         var modalInstance = $modal.open({
           animation: true,
-          templateUrl: '/templates/createClient.html',
+          templateUrl: '/view/create_client',
           controller: 'CreateClientCtrl',
           size: 'lg',
         });
 
         modalInstance.result.then(function (newClient) {
-          $scope.clients.push({name: newClient.name, id: newClient.id})
-          $scope.order.client_id = newClient.id;
-        }, function () {
-          $window.alert('Modal dismissed at: ' + new Date());
-        });
+            $scope.clients.push({name: newClient.name, id: newClient.id})
+            $scope.order.client_id = newClient.id;
+            }, function () {}
+        );
       }
 
       $scope.submit = function($event){
