@@ -6,8 +6,8 @@ class CreateOrderItems < ActiveRecord::Migration
       t.references :user, index: true
       t.integer :quantity
       t.integer :status
-      t.integer :buy_price
-      t.integer :sale_price
+      t.decimal :buy_price, precision: 5, scale: 2
+      t.decimal :sale_price, precision: 5, scale: 2
       t.integer :sale_price_unit
 
       t.timestamps null: false

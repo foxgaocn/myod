@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20150614042730) do
     t.integer  "user_id"
     t.integer  "quantity"
     t.integer  "status"
-    t.integer  "buy_price"
-    t.integer  "sale_price"
+    t.decimal  "buy_price",       precision: 5, scale: 2
+    t.decimal  "sale_price",      precision: 5, scale: 2
     t.integer  "sale_price_unit"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "order_items", ["client_id"], name: "index_order_items_on_client_id", using: :btree

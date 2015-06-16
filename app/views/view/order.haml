@@ -1,9 +1,7 @@
 =render 'header'
 %section
-  .center{:class => ""}
-    %h4
-      
-      %h4
+  .center{class: "{{title_class}}"}
+    %h4 {{title}}
   %form{:novalidate => ""}
     %label 商品名:
     %autocomplete{"attr-input-class" => "form-control", "attr-placeholder" => "", :data => "products", "ng-model" => "order.product_name", "on-select" => "selectProduct", "on-type" => "updateProducts"}
@@ -15,8 +13,14 @@
         %select.form-control{"ng-model" => "order.client_id", "ng-options" => "client.id as client.name for client in clients", :required => ""}
       .col-xs-3
         .btn.btn-primary{"ng-click" => "newClient()"} 新客户
-    %label 状态
+    %label 状态:
     %select.form-control{"ng-model" => "order.status", "ng-options" => "status.code as status.title for status in valid_statuses", :required => ""}
+    %label 报价:
+    .row
+      .col-xs-9
+        %input.form-control{"ng-model" => "order.sale_price", :required => "", :type => "number", :step =>"0.01", :min=>'0'}
+      .col-xs-3
+        %select.form-control{"ng-model" => "order.sale_price_unit", "ng-options" => "unit.code as unit.title for unit in sale_price_units", :required => ""}
     %br/
     %br/
     .center

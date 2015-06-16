@@ -5,10 +5,11 @@ angular.module('myodControllers')
       $scope.products = [];
       $scope.product_ids = [];
       $scope.clients = [];
-      $scope.order = {quantity: 1, status: OrderItemStatus[0].code};
+      $scope.order = {quantity: 1, status: OrderItemStatus[0].code, sale_price_unit: 0};
       $scope.valid_statuses = OrderItemStatus.slice(0,2);
       $scope.title = '请添加订单'
       $scope.title_class='alert alert-info'
+      $scope.sale_price_units=[{code: 0, title:'人民币'}, {code:1, title:'澳元'}]
 
       ClientService.info(function(data){
         $scope.clients = data;
