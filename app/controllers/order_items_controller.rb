@@ -28,8 +28,8 @@ class OrderItemsController < ApplicationController
     product_name = order_item_params.delete(:product_name)
     raise 'No product name' if product_name.nil?
     unless(order_item_params[:product_id].present?)
-      product = Product.where(name: product_name, user_id: user_id)
-      product ||= Product.create(name: product_name, user_id: current_user.id)
+      product = Product.where(name: product_name, user_id: current_user.id).try(:first)
+      product ||= Product.create!(name: product_name, user_id: current_user.id)
       order_item_params[:product_id] = product.id
     end
     @order_item = OrderItem.new(order_item_params)

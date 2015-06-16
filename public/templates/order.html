@@ -3,10 +3,9 @@
   <a href=''><i class="fa fa-cog cog"></i></a>
 </header>
 <section>
-  <div class='center'>
-    <h3>{{title}}</h3>
+  <div class='center {{title_class}}'>
+    <h4>{{title}}<h4>
   </div>
-  <hr/>
   <form novalidate>
     <label>商品名: </label>
     <autocomplete ng-model="order.product_name" data="products" on-type="updateProducts" on-select='selectProduct' attr-input-class="form-control" attr-placeholder=""></autocomplete>
@@ -24,9 +23,9 @@
       </div>
     </div>
     <label>状态</label>
-      <select ng-model="order.status"
-          ng-options="status.code as status.title for status in valid_statuses" class="form-control" required>
-      </select>
+    <select ng-model="order.status"
+        ng-options="status.code as status.title for status in valid_statuses" class="form-control" required>
+    </select>
     <br/>
     <br/>
     <div class='center'>

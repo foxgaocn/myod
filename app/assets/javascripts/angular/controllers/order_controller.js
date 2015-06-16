@@ -1,15 +1,16 @@
 angular.module('myodControllers')
-  .controller('OrderCtrl', ['$scope', '$window', 'ProductService', 'ClientService', 'OrderService', 'OrderItemStatus',
-    function($scope, $window, ProductService, ClientService, OrderService, OrderItemStatus) {
+  .controller('OrderCtrl', ['$scope', '$window', '$modal', 'ProductService', 'ClientService', 'OrderService', 'OrderItemStatus',
+    function($scope, $window,  $modal, ProductService, ClientService, OrderService, OrderItemStatus) {
       $scope.all_products = [];
       $scope.products = [];
       $scope.product_ids = [];
       $scope.clients = [];
       $scope.order = {quantity: 1, status: OrderItemStatus[0].code};
       $scope.valid_statuses = OrderItemStatus.slice(0,2);
-      $scope.title = '请添加商品'
+      $scope.title = '请添加订单'
+      $scope.title_class='alert alert-info'
 
-      ClientService.query(function(data){
+      ClientService.info(function(data){
         $scope.clients = data;
       });
 
@@ -44,20 +45,16 @@ angular.module('myodControllers')
       $scope.newClient = function(){
         var modalInstance = $modal.open({
           animation: true,
-          templateUrl: 'createClient.html',
+          templateUrl: '/templates/createClient.html',
           controller: 'CreateClientCtrl',
-          size: size,
-          resolve: {
-            items: function () {
-              return $scope.items;
-            }
-          }
+          size: 'lg',
         });
 
-        modalInstance.result.then(function (selectedItem) {
-          $scope.selected = selectedItem;
+        modalInstance.result.then(function (newClient) {
+          $scope.clients.push({name: newClient.name, id: newClient.id})
+          $scope.order.client_id = newClient.id;
         }, function () {
-          $log.info('Modal dismissed at: ' + new Date());
+          $window.alert('Modal dismissed at: ' + new Date());
         });
       }
 
@@ -72,7 +69,9 @@ angular.module('myodControllers')
 
         OrderService.save({order_item: $scope.order}, 
           function() {$scope.reset();}, 
-          function(error){$window.alert("出错了 " + JSON.stringify(error))} 
+          function(error){
+            $scope.title = '对不起，出错了'
+            $scope.title_class='alert alert-danger'} 
           );
       };
 
@@ -81,9 +80,10 @@ angular.module('myodControllers')
           //we've created a new product, refresh the product list
           $scope.all_products = [];
         }
-        $scope.title = '添加成功,继续或返回'
-        $scope.order = {quantity: 1, status: OrderItemStatus[0].code};
+        $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status};
         $scope.valid_statuses = OrderItemStatus.slice(0,2);
+        $scope.title = '添加成功,请继续'
+        $scope.title_class='alert alert-success'
       }
 
   }]);
