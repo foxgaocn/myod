@@ -1,5 +1,7 @@
 angular.module('myodServices').factory('OrderService', ['$resource', function($resource){
   return $resource('/order_items.json', {},{
-    save: { method: 'POST', headers:{'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')} }
+    save: { method: 'POST', headers:{'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')} },
+    bought: { method: 'PUT', url:'/order_items/bought.json',  headers:{'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}},
+    to_be_purchased: { method: 'GET', url: 'order_items/to_be_purchased.json', isArray: true}
   })
 }]);

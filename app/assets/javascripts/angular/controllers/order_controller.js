@@ -80,7 +80,7 @@ angular.module('myodControllers')
           //we've created a new product, refresh the product list
           $scope.all_products = [];
         }
-        $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status};
+        $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status,sale_price_unit: $scope.order.sale_price_unit};
         $scope.valid_statuses = OrderItemStatus.slice(0,2);
         $scope.title = '添加成功,请继续'
         $scope.title_class='alert alert-success'

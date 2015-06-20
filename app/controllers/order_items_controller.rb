@@ -68,6 +68,19 @@ class OrderItemsController < ApplicationController
     end
   end
 
+  def bought
+    bought_params.each do |bought|
+      order_item = OrderItem.find bought["item_id"]
+      order_item.bought!(bought["quantity"], bought["buy_price"])
+    end
+    render nothing: true, status: :ok 
+  end
+
+  def to_be_purchased
+    items = OrderItem.includes(:client).where(user_id: current_user.id, status: 0).group_by(&:product_id)
+    @items = items.inject ({}){|hash, (k,v)| hash.merge((Product.find k) => v) }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order_item
@@ -81,5 +94,11 @@ class OrderItemsController < ApplicationController
         @order_item_params.merge!(user_id: current_user.id)
       end
       @order_item_params
+    end
+
+    def bought_params
+      params.require(:bought).map do |p|
+        ActionController::Parameters.new(p.to_hash).permit(:item_id, :quantity, :buy_price)
+      end
     end
 end

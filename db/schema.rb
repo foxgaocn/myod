@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150614042730) do
     t.decimal  "buy_price",       precision: 5, scale: 2
     t.decimal  "sale_price",      precision: 5, scale: 2
     t.integer  "sale_price_unit"
+    t.integer  "origination_id"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end

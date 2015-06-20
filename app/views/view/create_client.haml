@@ -1,7 +1,7 @@
 .modal-header
-  %h3 {{modal-title}} 
+  %h3 {{title}} 
 .modal-body
-  %form{:novalidate => ""}
+  %form{:novalidate => "", id:'create_client_form'}
     %label 客户名:
     %input.form-control{"ng-model" => "client.name", :required => "", :type => "text"}/
     %label 地址:

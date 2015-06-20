@@ -3,7 +3,7 @@ angular.module('myodControllers')
     function($scope, $window, ClientService, $modalInstance) {
       $scope.title = "创建新客户"
       $scope.ok = function ($event) {
-        var form = $($($event.currentTarget).parents('form'));
+        var form = $('#create_client_form');
         if(form.hasClass('ng-invalid')){
           $window.alert('请输入客户名')
           return;
