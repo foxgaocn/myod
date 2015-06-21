@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20150614042730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
