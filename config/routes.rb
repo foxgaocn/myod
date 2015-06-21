@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  resources :packages
+
   resources :order_items do
     collection do
       put 'bought'
