@@ -33,6 +33,7 @@ angular.module('myodControllers')
           //re-fetch data. TBD: calculate it from front-end
           OrderService.to_be_purchased(function(data){
             $scope.order_items = data;
+            $scope.text = $scope.order_items.length == 0 ? '没有待购买商品,请先录入订单' : '';
           });
           
           }, function () {}
