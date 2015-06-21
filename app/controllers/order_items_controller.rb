@@ -81,6 +81,11 @@ class OrderItemsController < ApplicationController
     @items = items.inject ({}){|hash, (k,v)| hash.merge((Product.find k) => v) }
   end
 
+  def to_be_delivered
+    items = OrderItem.includes(:client, :product).where(user_id: current_user.id, status: 1).group_by(&:client_id)
+    @items = items.inject ({}){|hash, (k,v)| hash.merge((v[0].client) => v) }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order_item

@@ -1,10 +1,16 @@
 =render 'header'
-%section
-  %div{"ng-repeat" => "item in order_items"}
+%section.send
+  %div{"ng-repeat" => "client in client_items"}
     .panel.panel-info
       .panel-heading
         .row 
-          .col-xs-col6.pull-left
-            %h3 {{item.client_name}}
-          .col-xs-col6.pull-right
-            .btn.btn-success 打包
+          .col-xs-6
+            客户: 
+            %b {{client.client_name}}
+          .col-xs-6
+            .btn.btn-success.pull-right 打包
+      %table.table.table-striped.table-hover.table-bordered
+        %tr{"ng-repeat" => "item in client.items"}
+          %td{"ng-click"=> "open_details($index)"} {{item.product_name}} X {{item.quantity}}
+  .center
+    %h2 {{text}}

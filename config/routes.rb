@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   
 
   resources :order_items do
-    put 'bought', on: :collection
-    get 'to_be_purchased', on: :collection
+    collection do
+      put 'bought'
+      get 'to_be_purchased'
+      get 'to_be_delivered'
+    end
   end
 
   devise_for :users, :controllers => {sessions: 'sessions'} 
