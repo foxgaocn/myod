@@ -1,0 +1,11 @@
+.modal-header
+  %h3 打包明细 
+.modal-body
+  %form{:novalidate => "", id:'package-form'}
+    %div{"ng-repeat" => "item in items"}
+      %select{"ng-model" => "packed[$index].quantity", "ng-options" => "value for value in item.values", :required => ""}}
+      %label {{item.product_name}}
+      %hr
+.modal-footer
+  %button.btn.btn-primary{"ng-click" => "ok($event)"} OK
+  %button.btn.btn-warning{"ng-click" => "cancel()"} Cancel
