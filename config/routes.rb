@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
 
-  resources :packages
+  resources :packages do
+    collection do
+      get 'next_label'
+    end
+  end
 
   resources :order_items do
     collection do

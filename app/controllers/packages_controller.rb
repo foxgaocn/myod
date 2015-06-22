@@ -63,6 +63,8 @@ class PackagesController < ApplicationController
   end
 
   def next_label
+    ids = params[:client_ids]
+    
     render json: {next_label: Package.next_label(current_user.id, params[:client_id])} 
   end  
 

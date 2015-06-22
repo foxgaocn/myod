@@ -1,6 +1,6 @@
 angular.module('myodControllers')
-  .controller('PackageCtrl', ['$scope', '$window', 'OrderService', '$modalInstance', 'items',
-    function($scope, $window, OrderService, $modalInstance, items) {
+  .controller('PackageCtrl', ['$scope', '$window', 'PackageService', '$modalInstance', 'items',
+    function($scope, $window, PackageService, $modalInstance, items) {
       $scope.items = items;
       $scope.packed = [];
       //initialize the bought item list and construct the value list for html select
