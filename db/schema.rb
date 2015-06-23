@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621210849) do
+ActiveRecord::Schema.define(version: 20150623205115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -59,8 +60,10 @@ ActiveRecord::Schema.define(version: 20150621210849) do
     t.integer  "user_id"
     t.integer  "number"
     t.string   "tracking"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.decimal  "shipping_fee", precision: 5, scale: 2
+    t.integer  "status"
   end
 
   add_index "packages", ["client_id"], name: "index_packages_on_client_id", using: :btree

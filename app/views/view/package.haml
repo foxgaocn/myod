@@ -2,10 +2,24 @@
   %h3 打包明细 
 .modal-body
   %form{:novalidate => "", id:'package-form'}
-    %div{"ng-repeat" => "item in items"}
-      %select{"ng-model" => "packed[$index].quantity", "ng-options" => "value for value in item.values", :required => ""}}
-      %label {{item.product_name}}
-      %hr
+    .panel.panel-info
+      .panel-heading 包裹编号: {{package.label}}
+      %table.table.table-striped
+        %tr
+          %th 产品名
+          %th 包装数量
+        %tr{"ng-repeat" => "item in items"}
+          %td {{item.product_name}}
+          %td 
+            %select{"ng-model" => "package.items[$index].quantity", "ng-options" => "value for value in item.values", :required => ""}}
+      .panel-footer
+        .row
+          .col-md-6
+            %label 运单号
+            %input{"ng-model" => "package.tracking"}
+          .col-md-6
+            %lable 总运费
+            %input{"ng-model" => "package.shipping_fee", :required => "", :type => 'number', :step => '0.01'}澳元
 .modal-footer
-  %button.btn.btn-primary{"ng-click" => "ok($event)"} OK
-  %button.btn.btn-warning{"ng-click" => "cancel()"} Cancel
+  %button.btn.btn-primary{"ng-click" => "ok($event)"} 确定
+  %button.btn.btn-warning{"ng-click" => "cancel()"} 取消

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :packages do
     collection do
-      get 'next_label'
+      get 'next_label/:client_id', to: 'packages#next_label'
     end
   end
 

@@ -23,13 +23,13 @@ angular.module('myodControllers')
           controller: 'PackageCtrl',
           size: 'lg',
           resolve: {
-            items: function () {
-              return $scope.client_items[index].items;
+            info: function () {
+              return $scope.client_items[index];
             }
           }
         });
 
-        modalInstance.result.then(function (bought) {
+        modalInstance.result.then(function () {
           //re-fetch data. TBD: calculate it from front-end
           OrderService.to_be_delivered(function(data){
             $scope.client_items = data;
