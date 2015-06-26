@@ -95,7 +95,7 @@ class OrderItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_item_params
       unless(@order_item_params)
-        @order_item_params = params.require(:order_item).permit(:product_name, :product_id, :client_id, :quantity, :status, :sale_price, :sale_price_unit)
+        @order_item_params = params.require(:order_item).permit(:product_name, :product_id, :client_id, :quantity, :status, :sale_price)
         @order_item_params.merge!(user_id: current_user.id)
       end
       @order_item_params

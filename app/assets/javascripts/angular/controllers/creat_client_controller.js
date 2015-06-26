@@ -1,7 +1,10 @@
 angular.module('myodControllers')
-  .controller('CreateClientCtrl', ['$scope', '$window', 'ClientService', '$modalInstance',
-    function($scope, $window, ClientService, $modalInstance) {
+  .controller('CreateClientCtrl', ['$scope', '$window', 'ClientService', 'PriceUnits', '$modalInstance',
+    function($scope, $window, ClientService, PriceUnits, $modalInstance) {
       $scope.title = "创建新客户"
+      $scope.price_units = PriceUnits
+      $scope.client={price_unit: PriceUnits[0].code}
+
       $scope.ok = function ($event) {
         var form = $('#create_client_form');
         if(form.hasClass('ng-invalid')){

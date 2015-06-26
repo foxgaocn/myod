@@ -6,7 +6,6 @@ quantity ""
 status ""
 buy_price ""
 sale_price ""
-sale_price_unit ""
   end
 
 end

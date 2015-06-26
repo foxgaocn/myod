@@ -5,11 +5,9 @@ angular.module('myodControllers')
       $scope.products = [];
       $scope.product_ids = [];
       $scope.clients = [];
-      $scope.order = {quantity: 1, status: OrderItemStatus[0].code, sale_price_unit: 0};
-      $scope.valid_statuses = OrderItemStatus.slice(0,2);
+      $scope.order = {quantity: 1, status: OrderItemStatus[0].code};
       $scope.title = '请添加订单'
       $scope.title_class='alert alert-info'
-      $scope.sale_price_units=[{code: 0, title:'人民币'}, {code:1, title:'澳元'}]
 
       ClientService.info(function(data){
         $scope.clients = data;
@@ -52,8 +50,9 @@ angular.module('myodControllers')
         });
 
         modalInstance.result.then(function (newClient) {
-            $scope.clients.push({name: newClient.name, id: newClient.id})
+            $scope.clients.push({name: newClient.name, id: newClient.id, price_unit_string: newClient.price_unit_string})
             $scope.order.client_id = newClient.id;
+            $scope.price_unit = newClient.price_unit_string
             }, function () {}
         );
       }
@@ -80,10 +79,16 @@ angular.module('myodControllers')
           //we've created a new product, refresh the product list
           $scope.all_products = [];
         }
-        $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status,sale_price_unit: $scope.order.sale_price_unit};
+        $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status};
         $scope.valid_statuses = OrderItemStatus.slice(0,2);
         $scope.title = '添加成功,请继续'
         $scope.title_class='alert alert-success'
+      };
+
+      $scope.clientChanged = function(client_id){
+        $scope.price_unit = $scope.clients.filter(function(c){return c.id == client_id})[0].price_unit_string
       }
+
+
 
   }]);

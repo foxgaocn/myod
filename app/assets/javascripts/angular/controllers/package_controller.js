@@ -22,7 +22,6 @@ angular.module('myodControllers')
           $window.alert('数据有误，请核对')
           return;
         };
-        $window.alert(JSON.stringify($scope.package))
         PackageService.save({package: $scope.package},
           function(){
             $modalInstance.close();

@@ -1,5 +1,5 @@
 =render 'header'
-%section
+%section.order
   .center{class: "{{title_class}}"}
     %h4 {{title}}
   %form{:novalidate => ""}
@@ -10,17 +10,11 @@
     %label 客户:
     .row
       .col-xs-9
-        %select.form-control{"ng-model" => "order.client_id", "ng-options" => "client.id as client.name for client in clients", :required => ""}
+        %select.form-control{"ng-model" => "order.client_id", "ng-options" => "client.id as client.name for client in clients", "ng-change"=>"clientChanged(order.client_id)", :required => ""}
       .col-xs-3
         .btn.btn-primary{"ng-click" => "newClient()"} 新客户
-    %label 状态:
-    %select.form-control{"ng-model" => "order.status", "ng-options" => "status.code as status.title for status in valid_statuses", :required => ""}
-    %label 报价:
-    .row
-      .col-xs-9
-        %input.form-control{"ng-model" => "order.sale_price", :required => "", :type => "number", :step =>"0.01", :min=>'0'}
-      .col-xs-3
-        %select.form-control{"ng-model" => "order.sale_price_unit", "ng-options" => "unit.code as unit.title for unit in sale_price_units", :required => ""}
+    %label 单价: ({{price_unit}})
+    %input.form-control{"ng-model" => "order.sale_price", :required => "", :type => "number", :step =>"0.01", :min=>'0'}
     %br/
     %br/
     .center

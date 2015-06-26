@@ -64,7 +64,7 @@ class ClientsController < ApplicationController
   end
 
   def info
-    infos = Client.where(user_id: current_user.id).collect{ |p| {name: p.name.downcase, id:p.id} }
+    infos = Client.where(user_id: current_user.id).collect{ |p| {name: p.name.downcase, id:p.id, price_unit_string: p.price_unit_string} }
     render json: infos.to_json
   end
 
@@ -76,6 +76,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :address, :phone, :sid).merge(user_id: current_user.id)
+      params.require(:client).permit(:name, :address, :phone, :sid, :price_unit).merge(user_id: current_user.id)
     end
 end

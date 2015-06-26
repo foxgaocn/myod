@@ -16,7 +16,7 @@ class OrderItem < ActiveRecord::Base
     else #only bought partial, split the order
       OrderItem.create!(product_id: product_id, client_id: client_id, user_id: user_id, 
         quantity: bought_quantity, status: 1, buy_price: price, sale_price: sale_price,
-        sale_price_unit: sale_price_unit, origination_id: id)
+        origination_id: id)
       update_attributes!(quantity: quantity - bought_quantity)
     end
   end

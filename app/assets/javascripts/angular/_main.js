@@ -17,7 +17,13 @@ myod.value('OrderItemStatus',
   [ {code: 0, title: '待购买'},
     {code: 1, title: '待发货'},
     {code: 2, title: '待收款'},
-    {code: 3, title: '已收款'}]);
+    {code: 3, title: '已收款'}]
+);
+
+myod.value('PriceUnits',
+  [ {code: 0, title: '人民币'},
+    {code: 1, title: '澳元'}]
+);
 
 
 
