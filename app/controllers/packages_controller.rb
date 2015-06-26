@@ -5,7 +5,13 @@ class PackagesController < ApplicationController
   # GET /packages
   # GET /packages.json
   def index
-    @packages = Package.all
+    if(params[:status].present?)
+      @packages = Package.includes(:client, order_items: [:product])
+        .where(status: params[:status], user_id: current_user.id)
+    else
+      @packages = Package.includes(:client, order_items: [:product])
+        .where(user_id: current_user.id)
+    end
   end
 
   # GET /packages/1

@@ -5,6 +5,14 @@ class Package < ActiveRecord::Base
 
   validates :number, :user_id, :client_id, :shipping_fee, :status, presence: true
 
+  def total_amount
+    order_items.to_a.reduce(0){|init, item| init+= item.sale_price * item.quantity}
+  end
+
+  def label
+    "#{client.name}-#{number.to_s.rjust(4, '0')}"
+  end
+
   def self.build_package(package_params)
     ActiveRecord::Base.transaction do
       items = package_params.delete(:items)

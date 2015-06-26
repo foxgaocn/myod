@@ -1,0 +1,21 @@
+=render 'header'
+%section.pay
+  .row{"ng-repeat" => "package in packages"}
+    .col-xs-9
+      .div.text{"ng-click"=> "show_details($index)"}
+        %i.fa.fa-archive
+        {{package.label}} 
+        %span.small (应收款 {{package.total_amount}})
+        %span.pull-right.link{"ng-show" => "hide_item_details[$index]"} 详情
+      .div{"ng-hide" => "hide_item_details[$index]"}
+        .panel.panel-info
+          .panel-heading
+            %span 包裹明细
+            %span.pull-right.link{"ng-click"=> "hide_details($index)"} 收起
+          %table.table.table-striped
+            %tr{"ng-repeat" => "item in package.items"}
+              %td {{item.name}} X {{item.quantity}}
+    .col-xs-3
+      .btn.btn-success.pull-right{"ng-click"=>"paid($index)"} 已付款
+  .center
+    %h2 {{text}}

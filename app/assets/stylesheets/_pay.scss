@@ -1,0 +1,23 @@
+.pay{
+  .row{
+    margin: 5px;
+    padding: 5px;
+    border-bottom: solid 1px #ddd;
+    vertical-align: middle;
+    .text{
+      padding-top: 3px;
+      width: 100%;
+    }
+    .btn{
+      padding-bottom: 3px;
+    }
+    .link{
+      color: #00f;
+      text-decoration: underline;
+    }
+    .panel{
+      margin-top: 10px;
+    }
+  }
+
+}
