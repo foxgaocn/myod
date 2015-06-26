@@ -6,7 +6,7 @@ angular.module('myodControllers')
       PackageService.query({status: 0}, function(data){
         $scope.packages = data;
         for(var i = 0; i<data.length; i++) {$scope.hide_item_details.push(true)}
-        $scope.text = $scope.order_items.length == 0 ? '没有待收款项' : '';
+        $scope.text = $scope.packages.length == 0 ? '没有待收款项' : '';
       });
       //sample data structure
       // $scope.packages = 
@@ -27,6 +27,16 @@ angular.module('myodControllers')
       $scope.show_details = function(index){
         $scope.hide_item_details[index] = false;
       };
+
+      $scope.paid = function(index){
+        PackageService.paid({id: $scope.packages[index].id, status: 1}, function(){
+          $scope.packages.splice(index, 1);
+          $scope.hide_item_details.splice(index, 1);
+          $scope.text = $scope.packages.length == 0 ? '没有待收款项' : '';
+        }, function(){
+          $window.alert('对不起，出错了')
+        })
+      }
 
 
   }]);

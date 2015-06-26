@@ -42,7 +42,7 @@ class PackagesController < ApplicationController
     respond_to do |format|
       if @package.update(package_params)
         format.html { redirect_to @package, notice: 'Package was successfully updated.' }
-        format.json { render :show, status: :ok, location: @package }
+        format.json { render nothing: true, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @package.errors, status: :unprocessable_entity }
@@ -73,7 +73,7 @@ class PackagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
       #{"package":{"items":[{"id":5,"quantity":2},{"id":2,"quantity":1},{"id":7,"quantity":3}],"label":"王宝强-0001","number":1,"shipping_fee":2143,"tracking":"234343"}}
-      all = params.require(:package).permit(:client_id, :number, :tracking, :shipping_fee, :items=>[:id, :quantity], )
+      all = params.require(:package).permit(:client_id, :number, :tracking, :shipping_fee, :status, :items=>[:id, :quantity], )
       all.merge!(user_id: current_user.id)
       all
     end
