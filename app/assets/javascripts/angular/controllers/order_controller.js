@@ -80,13 +80,27 @@ angular.module('myodControllers')
           $scope.all_products = [];
         }
         $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status};
-        $scope.valid_statuses = OrderItemStatus.slice(0,2);
         $scope.title = '添加成功,请继续'
         $scope.title_class='alert alert-success'
+        $scope.total_price = 0
       };
 
       $scope.clientChanged = function(client_id){
         $scope.price_unit = $scope.clients.filter(function(c){return c.id == client_id})[0].price_unit_string
+      }
+
+      $scope.unit_price_changed = function(unit_price){
+        $scope.total_price = unit_price * $scope.order.quantity
+      }
+
+      $scope.total_price_changed = function(total_price){
+        $scope.order.sale_price = parseFloat((total_price / $scope.order.quantity).toFixed(2))
+      }
+
+      $scope.quantity_changed = function(quantity){
+        if($scope.order.sale_price){
+          $scope.total_price = parseFloat(($scope.order.sale_price * quantity).toFixed(2))
+        }
       }
 
 
