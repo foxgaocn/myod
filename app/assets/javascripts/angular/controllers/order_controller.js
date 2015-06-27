@@ -30,7 +30,7 @@ angular.module('myodControllers')
         }
         
         var match_products = $scope.all_products.filter(function(p){
-          return p.name.indexOf(typed) > -1;
+          return p.name.toLowerCase().indexOf(typed.toLowerCase()) > -1;
         })
         $scope.products = match_products.map(function(p){return p.name})
         $scope.product_ids = match_products.map(function(p){return p.id})
