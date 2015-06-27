@@ -1,0 +1,9 @@
+=render 'header'
+%section.ordermanager
+  .row.filter
+    .col-xs-6
+      %lable 日期
+      %select{"ng-model" => "query.date"}
+    .col-xs-6
+      %lable 客户
+      %select{"ng-model" => "query.client_id"}

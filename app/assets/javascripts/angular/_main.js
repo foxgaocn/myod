@@ -50,6 +50,10 @@ myod.config(['$routeProvider',
         templateUrl: '/view/pay',
         controller: 'PayCtrl'
       }).
+      when('/ordermanager',{
+        templateUrl: '/view/ordermanager',
+        controller: 'OrderManagerCtrl'
+      }).
       when('/signed_out', {
         controller : function(){
             window.location.replace('/users/sign_in');
