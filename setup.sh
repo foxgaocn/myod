@@ -51,6 +51,22 @@ rvmsudo passenger-install-nginx-module
 #config ngix:
 #read:  https://www.digitalocean.com/community/tutorials/how-to-automate-ruby-on-rails-application-deployments-using-capistrano
 
+#capifiy the app
+#1.  install gem
+#2:  bundle exec cap install
+
+#install postgres
+sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install libpq-dev
+sudo -i -u postgres
+psql
+create role myod WITH PASSWORD 'xxx' CREATEDB LOGIN;
+
+
+#install nodejs
+sudo apt-get install nodejs
+
+sudo chown deploy:deploy /data/myod
 #deploy from local machine
 cap production deploy   
 
