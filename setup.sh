@@ -62,6 +62,8 @@ sudo -i -u postgres
 psql
 create role myod WITH PASSWORD 'xxx' CREATEDB LOGIN;
 
+export MYOD_DATABASE_PASSWORD=xxxx
+
 
 #install nodejs
 sudo apt-get install nodejs
@@ -69,6 +71,12 @@ sudo apt-get install nodejs
 sudo chown deploy:deploy /data/myod
 #deploy from local machine
 cap production deploy   
+
+
+#after first deploy:
+change the database.yml and secrets.yml with secret key
+#symbol link in deploy.rb
+set :linked_files, %w{config/database.yml, config/secrets.yml}
 
 
 #if get an "permission denied (publickey error)" run the following
