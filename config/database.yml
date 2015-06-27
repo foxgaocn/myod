@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: myod_production
-  username: myod
+  host: localhost
+  username: deploy
   password: <%= ENV['MYOD_DATABASE_PASSWORD'] %>
