@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  def info
-    infos = Product.where(user_id: current_user.id).collect{ |p| {name: p.name.downcase, id:p.id} }
-    render json: infos.to_json
+  def suggestions
+    suggestiongs = Product.select(:id, :name).where("name ilike ?", "%#{params[:typed]}%").limit(8)
+    render json: suggestiongs.to_json
   end
 
   def create

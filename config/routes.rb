@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root 'main#home'
 
   resources :products do
-    get 'info', on: :collection
+    get 'suggestions', on: :collection
   end
 
   resources :clients do

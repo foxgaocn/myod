@@ -18,22 +18,27 @@ angular.module('myodControllers')
 
         value = typed.trim().toLowerCase();
 
-        if(value == ''){
+        if(value.length < 2){
           $scope.products = [];
           return;
         } 
 
-        if ($scope.all_products.length == 0){
-          ProductService.query(function(data){
-            $scope.all_products = data;
-          });
-        }
-        
-        var match_products = $scope.all_products.filter(function(p){
-          return p.name.toLowerCase().indexOf(typed.toLowerCase()) > -1;
+        ProductService.suggestions({typed: value}, function(data){
+          $scope.products = data.map(function(p){return p.name})
+          $scope.product_ids = data.map(function(p){return p.id})
         })
-        $scope.products = match_products.map(function(p){return p.name})
-        $scope.product_ids = match_products.map(function(p){return p.id})
+
+        // if ($scope.all_products.length == 0){
+        //   ProductService.query(function(data){
+        //     $scope.all_products = data;
+        //   });
+        // }
+        
+        // var match_products = $scope.all_products.filter(function(p){
+        //   return p.name.toLowerCase().indexOf(value) > -1;
+        // })
+        // $scope.products = match_products.map(function(p){return p.name})
+        // $scope.product_ids = match_products.map(function(p){return p.id})
       };
 
       $scope.selectProduct = function(product){
