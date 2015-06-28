@@ -5,7 +5,6 @@ angular.module('myodControllers')
       
       $scope.signout = function(){
         LoginService.delete(function(){
-          alert('signed out')
           window.location='/'
         });
     }
