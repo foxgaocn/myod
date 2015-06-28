@@ -103,6 +103,17 @@ angular.module('myodControllers')
         }
       }
 
+      $scope.quantity_blur = function(){
+        if($scope.order.quantity == ''){
+          $scope.order.quantity = $scope.previous_quantity
+        }
+      }
+
+      $scope.quantity_clicked = function(){
+        $scope.previous_quantity = $scope.order.quantity;
+        $scope.order.quantity = ''
+      }
+
 
 
   }]);
