@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_package, only: [:show, :edit, :update, :destroy]
+  before_action :set_package, only: [:show, :edit, :update, :paid]
 
   # GET /packages
   # GET /packages.json
@@ -48,6 +48,11 @@ class PackagesController < ApplicationController
         format.json { render json: @package.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def paid
+    @package.paid!
+    render nothing: true, status: :ok
   end
 
   # DELETE /packages/1

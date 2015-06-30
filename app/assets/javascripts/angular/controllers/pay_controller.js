@@ -29,7 +29,7 @@ angular.module('myodControllers')
       };
 
       $scope.paid = function(index){
-        PackageService.paid({id: $scope.packages[index].id, status: 1}, function(){
+        PackageService.paid({id: $scope.packages[index].id}, function(){
           $scope.packages.splice(index, 1);
           $scope.hide_item_details.splice(index, 1);
           $scope.text = $scope.packages.length == 0 ? '没有待收款项' : '';

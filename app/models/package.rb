@@ -1,4 +1,6 @@
 class Package < ActiveRecord::Base
+  enum status: {created: 0, paid: 1}
+
   has_many :order_items
   belongs_to :client
   belongs_to :user
@@ -11,6 +13,13 @@ class Package < ActiveRecord::Base
 
   def label
     "#{client.name}-#{number.to_s.rjust(4, '0')}"
+  end
+
+  def paid!
+    ActiveRecord::Base.transaction do
+      order_items.each{ |item| item.paid! }
+      update_attributes!(status: 1)
+    end
   end
 
   def self.build_package(package_params)

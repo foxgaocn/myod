@@ -1,11 +1,12 @@
 class OrderItemsController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
   # GET /order_items
   # GET /order_items.json
   def index
-    @order_items = OrderItem.all
+    current_user = {id: 3}
+    @grouped_order_items = OrderItem.query(query_params).group_by{|item| item.create_date}
   end
 
   # GET /order_items/1
@@ -105,5 +106,9 @@ class OrderItemsController < ApplicationController
       params.require(:bought).map do |p|
         ActionController::Parameters.new(p.to_hash).permit(:item_id, :quantity, :buy_price)
       end
+    end
+
+    def query_params
+      params.permit(:client_id, :status, :date).merge(user_id: current_user.id)
     end
 end

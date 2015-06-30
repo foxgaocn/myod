@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'next_label/:client_id', to: 'packages#next_label'
     end
+    put 'paid', on: :member
   end
 
   resources :order_items do

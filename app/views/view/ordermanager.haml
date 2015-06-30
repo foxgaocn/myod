@@ -3,7 +3,18 @@
   .row.filter
     .col-xs-6
       %lable 日期
-      %select{"ng-model" => "query.date"}
+      %select{"ng-model" => "query.date", "ng-options" => "date.code as date.title for date in dates", :required => ""}
     .col-xs-6
       %lable 客户
-      %select{"ng-model" => "query.client_id"}
+      %select{"ng-model" => "query.client_id", "ng-options" => "client.id as client.name for client in clients", :required => ""}
+  .row.filter
+    .col-xs-6
+      %lable 状态
+      %select{"ng-model" => "query.status", "ng-options" => "status.code as status.title for status in statuses", :required => ""}
+    .col-xs-6
+      .btn.btn-success 重新查询
+  %div{{"ng-repeat" => "grouped_items in data"}}
+    .date
+      {{grouped_items.date}}
+    .row{{"ng-repeat" => "main_item in grouped_items.main_items"}}
+      {{main_item.product_name}} x {{main_item.total_quantity}}
