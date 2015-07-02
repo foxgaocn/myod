@@ -16,5 +16,18 @@
   %div{{"ng-repeat" => "grouped_items in data"}}
     .date
       {{grouped_items.date}}
-    .row{{"ng-repeat" => "main_item in grouped_items.main_items"}}
-      {{main_item.product_name}} x {{main_item.total_quantity}}
+    %div{{"ng-repeat" => "main_item in grouped_items.main_items"}}
+      .row.title
+        .col-xs-10
+          %span.name {{main_item.client_name}}: 
+          %span {{main_item.product_name}} x {{main_item.total_quantity}}
+        .col-xs-2.hide-toggle{"ng-click" => "hideDetail[$parent.$index][$index] = false"}
+          %i.fa.fa-angle-double-down
+      .detail{"collapse" => "hideDetail[$parent.$index][$index]"}
+        .row.detail-item
+          {{main_item.quantity}}个 {{getStatusString(main_item.status)}}  
+
+        .row.detail-item{{"ng-repeat" => "item in main_item.subitems"}}
+          {{item.quantity}}个  {{getStatusString(item.status)}}
+        .hide-detail{"ng-click" => "hideDetail[$parent.$index][$index] = true"} 
+          %i.fa.fa-angle-double-up 隐藏

@@ -1,7 +1,7 @@
 angular.module('myodControllers')
   .controller('OrderManagerCtrl', ['$scope', '$window', '$modal', 'ProductService', 'ClientService', 'OrderService', 'OrderItemStatus',
     function($scope, $window,  $modal, ProductService, ClientService, OrderService, OrderItemStatus) {
-      $scope.isCollapsed = true;
+      $scope.hideDetail = [];
       $scope.query = {date:-1, status:-1, client_id: -1}
       $scope.dates=[{code:1, title:"最近1月"},
                     {code:3, title:"最近3月"},
@@ -19,6 +19,20 @@ angular.module('myodControllers')
 
       OrderService.get($scope.query, function(data){
         $scope.data = data;
+        for (var i = data.length - 1; i >= 0; i--) {
+          $scope.hideDetail[i] = [];
+          for (var j = data[i].main_items.length - 1; j >= 0; j--) {
+            $scope.hideDetail[i][j] = true;
+          };
+        };
       })
+
+      $scope.toggleDetail = function(i,j){
+        $scope.hideDetail[i][j] = false;
+      }
+
+      $scope.getStatusString = function(statusCode){
+        return OrderItemStatus.filter(function(p){return p.code == statusCode})[0].title
+      }
 
   }]);
