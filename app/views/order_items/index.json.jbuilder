@@ -1,4 +1,4 @@
-json.array!(@grouped_order_items.keys) do |date|
+json.array!(@grouped_order_items.keys.sort{|a,b| a <=> b}) do |date|
   json.set!(:date, date)
   json.main_items @grouped_order_items[date] do |order_item|
     json.extract! order_item, :id, :quantity

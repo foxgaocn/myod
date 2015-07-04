@@ -1,17 +1,17 @@
 class OrderItemsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
   # GET /order_items
   # GET /order_items.json
   def index
-    current_user = {id: 3}
     @grouped_order_items = OrderItem.query(query_params).group_by{|item| item.create_date}
   end
 
   # GET /order_items/1
   # GET /order_items/1.json
   def show
+    @order_item = OrderItem.includes(:product, :client).find(params[:id])
   end
 
   # GET /order_items/new
