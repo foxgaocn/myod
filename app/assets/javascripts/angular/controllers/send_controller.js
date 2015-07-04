@@ -1,6 +1,7 @@
 angular.module('myodControllers')
   .controller('SendCtrl', ['$scope', '$window', '$modal','OrderService',
     function($scope, $window, $modal, OrderService) {
+      $scope.title = '待发货'
       OrderService.to_be_delivered(function(data){
         $scope.client_items = data;
         $scope.text = $scope.client_items.length == 0 ? '没有待发货商品' : '';

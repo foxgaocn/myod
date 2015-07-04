@@ -1,6 +1,7 @@
 angular.module('myodControllers')
   .controller('OrderManagerCtrl', ['$scope', '$window', '$modal', 'ProductService', 'ClientService', 'OrderService', 'OrderItemStatus',
     function($scope, $window,  $modal, ProductService, ClientService, OrderService, OrderItemStatus) {
+      $scope.title = '订单管理'
       $scope.hideDetail = [];
       $scope.query = {date:1, status:1, client_id: -1}
       $scope.dates=[{code:1, title:"最近1月"},

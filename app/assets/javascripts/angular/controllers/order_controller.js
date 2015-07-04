@@ -6,7 +6,7 @@ angular.module('myodControllers')
       $scope.product_ids = [];
       $scope.clients = [];
       $scope.order = {quantity: 1, status: OrderItemStatus[0].code};
-      $scope.title = '请添加订单'
+      $scope.title = '订单录入'
       $scope.title_class='alert alert-info'
 
       ClientService.info(function(data){

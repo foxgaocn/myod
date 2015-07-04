@@ -1,7 +1,5 @@
 =render 'header'
 %section.order
-  .center{class: "{{title_class}}"}
-    %h4 {{title}}
   %form{:novalidate => ""}
     %label 商品名:
     %autocomplete{"attr-input-class" => "form-control", "attr-placeholder" => "", :data => "products", "ng-model" => "order.product_name", "on-select" => "selectProduct", "on-type" => "updateProducts"}

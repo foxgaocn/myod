@@ -2,6 +2,10 @@
 %section
   %table.table.table-striped.table-hover.table-bordered
     %tr{"ng-repeat" => "item in order_items"}
-      %td{"ng-click"=> "open_details($index)"} {{item.product_name}} X {{item.total}}
+      %td
+        .row
+          .col-xs-9 {{item.product_name}} X {{item.total}}
+          .col-xs-3{"ng-click"=> "open_details($index)"} 
+            .btn.btn-success 买到了
   .center
     %h2 {{text}}

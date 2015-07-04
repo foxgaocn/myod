@@ -1,6 +1,7 @@
 angular.module('myodControllers')
   .controller('PayCtrl', ['$scope', '$window', '$modal','PackageService',
     function($scope, $window, $modal, PackageService) {
+      $scope.title = '待收款'
       $scope.hide_item_details = []
       $scope.text = ''
       PackageService.query({status: 0}, function(data){

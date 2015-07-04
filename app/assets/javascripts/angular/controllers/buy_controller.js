@@ -1,6 +1,7 @@
 angular.module('myodControllers')
   .controller('BuyCtrl', ['$scope', '$window', '$modal','OrderService',
     function($scope, $window, $modal, OrderService) {
+      $scope.title = '待购商品'
       OrderService.to_be_purchased(function(data){
         $scope.order_items = data;
         $scope.text = $scope.order_items.length == 0 ? '没有待购买商品,请先录入订单' : '';

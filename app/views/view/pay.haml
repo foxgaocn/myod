@@ -2,16 +2,18 @@
 %section.pay
   .row{"ng-repeat" => "package in packages"}
     .col-xs-9
-      .div.text{"ng-click"=> "show_details($index)"}
+      .div.text{"ng-click"=> "hide_item_details[$index] = !hide_item_details[$index]"}
         %i.fa.fa-archive
         {{package.label}} 
         %span.small (应收款 {{package.total_amount}})
-        %span.pull-right.link{"ng-show" => "hide_item_details[$index]"} 详情
+        %span.link 
+          %i.fa{"ng-class" => "hide_item_details[$index] ? 'fa-angle-double-down': 'fa-angle-double-up' "}
       .div{"ng-hide" => "hide_item_details[$index]"}
         .panel.panel-info
-          .panel-heading
+          .panel-heading{"ng-click"=> "hide_item_details[$index] = true"}
             %span 包裹明细
-            %span.pull-right.link{"ng-click"=> "hide_details($index)"} 收起
+            %span.pull-right.link 
+              %i.fa.fa-angle-double-up
           %table.table.table-striped
             %tr{"ng-repeat" => "item in package.items"}
               %td {{item.name}} X {{item.quantity}}
