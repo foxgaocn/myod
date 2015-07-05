@@ -45,4 +45,17 @@ class Package < ActiveRecord::Base
     end
     {number: next_number, label: label}
   end
+
+  def self.query(query_params)
+    from_month = query_params[:date].try(:to_i) || -1
+    client_id = query_params[:client_id].try(:to_i) || -1
+    status = query_params[:status].try(:to_i) || -1
+
+    packages = Package.includes(:client).where(user_id: query_params[:user_id])
+    packages = packages.where('created_at > ?', from_month.month.ago) if(from_month > 0)
+    packages = packages.where(client_id: client_id) if client_id > 0
+    packages = packages.where(status: status) if status > 0
+    packages.order(:created_at)
+  end
+
 end

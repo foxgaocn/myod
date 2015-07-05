@@ -58,6 +58,10 @@ myod.config(['$routeProvider',
         templateUrl: '/view/clientmanager',
         controller: 'ClientManagerCtrl'
       }).
+      when('/packagemanager', {
+        templateUrl: '/view/packagemanager',
+        controller: 'PackageManagerCtrl'
+      }).
       when('/signed_out', {
         controller : function(){
             window.location.replace('/users/sign_in');

@@ -14,6 +14,10 @@ class PackagesController < ApplicationController
     end
   end
 
+  def query
+    @packages = Package.query(query_params)
+  end
+
   # GET /packages/1
   # GET /packages/1.json
   def show

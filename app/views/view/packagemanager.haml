@@ -1,0 +1,9 @@
+=render 'header'
+%section.packagemanager
+  %table.table.table-striped.table-hover.table-bordered
+    %tr{"ng-repeat" => "package in packages"}
+      %td
+        .row
+          .col-xs-9 {{package.label}}
+          .col-xs-3
+            编辑
