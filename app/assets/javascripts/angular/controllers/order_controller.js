@@ -52,6 +52,9 @@ angular.module('myodControllers')
           templateUrl: '/view/create_client',
           controller: 'CreateClientCtrl',
           size: 'lg',
+          resolve:  {
+            id: function () { return undefined;}
+          }
         });
 
         modalInstance.result.then(function (newClient) {

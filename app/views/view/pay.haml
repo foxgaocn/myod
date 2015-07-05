@@ -1,11 +1,11 @@
 =render 'header'
 %section.pay
   .row{"ng-repeat" => "package in packages"}
-    .col-xs-9
+    .col-xs-10
       .div.text{"ng-click"=> "hide_item_details[$index] = !hide_item_details[$index]"}
         %i.fa.fa-archive
         {{package.label}} 
-        %span.small (应收款 {{package.total_amount}})
+        %span.small (应收 {{package.total_amount}})
         %span.link 
           %i.fa{"ng-class" => "hide_item_details[$index] ? 'fa-angle-double-down': 'fa-angle-double-up' "}
       .div{"ng-hide" => "hide_item_details[$index]"}
@@ -17,7 +17,7 @@
           %table.table.table-striped
             %tr{"ng-repeat" => "item in package.items"}
               %td {{item.name}} X {{item.quantity}}
-    .col-xs-3
+    .col-xs-2
       .btn.btn-success.pull-right{"ng-click"=>"paid($index)"} 已收款
   .center
     %h2 {{text}}

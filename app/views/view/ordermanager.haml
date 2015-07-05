@@ -22,7 +22,7 @@
           %span.name {{main_item.client_name}}: 
           %span {{main_item.product_name}} x {{main_item.total_quantity}}
         .col-xs-2.hide-toggle{"ng-click" => "hideDetail[$parent.$index][$index] = !hideDetail[$parent.$index][$index];"}
-          %i.fa{"ng-class" => "hideDetail[$parent.$index][$index] ? 'fa-angle-double-down': 'fa-angle-double-up' "}
+          %i.fa.link{"ng-class" => "hideDetail[$parent.$index][$index] ? 'fa-angle-double-down': 'fa-angle-double-up' "}
       .detail{"ng-hide" => "hideDetail[$parent.$index][$index]"}
         .row.detail-item{"ng-show" => "main_item.quantity > 0"}
           .col-xs-9
@@ -37,4 +37,4 @@
             .col-xs-3{"ng-if"=>"item.status < 2"}
               .btn.btn-success{"ng-click" => "edit(item.id, data.indexOf(grouped_items), grouped_items.main_items.indexOf(main_item), $index)"} 编辑
         .hide-detail{"ng-click" => "hideDetail[$parent.$index][$index] = true"} 
-          %i.fa.fa-angle-double-up 隐藏
+          %i.fa.link.fa-angle-double-up 隐藏

@@ -3,7 +3,7 @@
 .modal-body
   %form{:novalidate => "", id:'create_client_form'}
     %label 客户名:
-    %input.form-control{"ng-model" => "client.name", :required => "", :type => "text"}/
+    %input.form-control{"ng-model" => "client.name", :required => "", :type => "text", "ng-disabled"=> "isEditing"}/
     %label 地址:
     %input.form-control{"ng-model" => "client.address", :type => "text"}/
     %label 电话:
