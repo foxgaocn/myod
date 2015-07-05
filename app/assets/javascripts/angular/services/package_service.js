@@ -1,5 +1,6 @@
 angular.module('myodServices').factory('PackageService', ['$resource', function($resource){
   return $resource('/packages.json', {},{
+    get: {method: 'GET', isArray: true},
     query: {method: 'GET', url: 'packages/query.json', isArray: true},
     get_package: {method: 'GET', url: 'packages/:id.json', params: {id: '@id'}},
     update: {method: 'PUT', url: 'packages/:id.json', params: {id: '@id'},  headers:{'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}},

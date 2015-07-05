@@ -4,7 +4,7 @@ angular.module('myodControllers')
       $scope.title = '待收款'
       $scope.hide_item_details = []
       $scope.text = ''
-      PackageService.query({status: 0}, function(data){
+      PackageService.get({status: 0}, function(data){
         $scope.packages = data;
         for(var i = 0; i<data.length; i++) {$scope.hide_item_details.push(true)}
         $scope.text = $scope.packages.length == 0 ? '没有待收款项' : '';
