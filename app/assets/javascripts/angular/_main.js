@@ -20,6 +20,11 @@ myod.value('OrderItemStatus',
     {code: 3, title: '已收款'}]
 );
 
+myod.value('PackageStatus',
+  [ {code: 0, title: '待收款'},
+    {code: 1, title: '已收款'}]
+);
+
 myod.value('PriceUnits',
   [ {code: 0, title: '人民币'},
     {code: 1, title: '澳元'}]

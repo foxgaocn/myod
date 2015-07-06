@@ -1,6 +1,6 @@
 =render 'header'
 %section.pay
-  .row{"ng-repeat" => "package in packages"}
+  .row{"ng-repeat" => "package in packages", "ng-class" => "$even ? 'even' : '' "}
     .col-xs-10
       .div.text{"ng-click"=> "hide_item_details[$index] = !hide_item_details[$index]"}
         %i.fa.fa-archive
@@ -18,6 +18,6 @@
             %tr{"ng-repeat" => "item in package.items"}
               %td {{item.name}} X {{item.quantity}}
     .col-xs-2
-      .btn.btn-success.pull-right{"ng-click"=>"paid($index)"} 已收款
+      .btn.btn-success.pull-right{"ng-click"=>"paid($index)"} 收款
   .center
     %h2 {{text}}

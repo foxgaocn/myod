@@ -9,7 +9,7 @@
     %label 电话:
     %input.form-control{"ng-model" => "client.phone", :type => "number"}/
     %label 身份证号码:
-    %input.form-control{"ng-model" => "client.sid", :type => "number"}/
+    %input.form-control{"ng-model" => "client.sid"}/
     %label 结算货币:
     %select.form-control{"ng-model" => "client.price_unit", "ng-options" => "price.code as price.title for price in price_units", :required => ""}
 

@@ -1,1 +1,4 @@
-json.extract! @package, :id, :label, :client, :user, :number, :created_at, :updated_at
+json.extract! @package, :id, :label, :tracking
+json.status Package.statuses[@package.status]
+json.shipping_fee @package.shipping_fee.to_f
+

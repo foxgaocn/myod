@@ -2,7 +2,7 @@ angular.module('myodControllers')
   .controller('CreateClientCtrl', ['$scope', '$window', 'ClientService', 'PriceUnits', '$modalInstance', 'id',
     function($scope, $window, ClientService, PriceUnits, $modalInstance, id) {
       $scope.isEditing = (id != undefined)
-      $scope.title = $scope.isEditing? "编辑客户" : "创建新客户"
+      $scope.title = $scope.isEditing? "客户编辑" : "创建新客户"
       $scope.price_units = PriceUnits;
       if(id != undefined){
         ClientService.get({id: id}, function(data){

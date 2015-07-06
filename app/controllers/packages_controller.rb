@@ -5,16 +5,6 @@ class PackagesController < ApplicationController
   # GET /packages
   # GET /packages.json
   def index
-    if(params[:status].present?)
-      @packages = Package.includes(:client, order_items: [:product])
-        .where(status: params[:status], user_id: current_user.id)
-    else
-      @packages = Package.includes(:client, order_items: [:product])
-        .where(user_id: current_user.id)
-    end
-  end
-
-  def query
     @packages = Package.query(query_params)
   end
 
@@ -85,5 +75,9 @@ class PackagesController < ApplicationController
       all = params.require(:package).permit(:client_id, :number, :tracking, :shipping_fee, :status, :items=>[:id, :quantity], )
       all.merge!(user_id: current_user.id)
       all
+    end
+
+    def query_params
+      params.permit(:client_id, :status, :date).merge(user_id: current_user.id)
     end
 end
