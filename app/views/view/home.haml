@@ -46,6 +46,15 @@
     %tr
       %td
         .icon
+          %a{:href => "/#/contact"}
+            %i.fa.fa-envelope-o.lx
+          %p 联系我们
+      %td
+        .icon
           %a{:href => "#", "ng-click" => "signout()"}
             %i.fa.fa-sign-out.tc
           %p 退出系统
+  -if  current_user.email == 'guest@test.com'
+    .alert.alert-danger
+      %p 当前用户为测试用户。您输入的任何数据将无法确保得到保存。
+      %p 如果您想继续使用代购本, 请退出该用户并注册您自己的用户。 

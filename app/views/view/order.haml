@@ -10,7 +10,7 @@
       .col-xs-9
         %select.form-control{"ng-model" => "order.client_id", "ng-options" => "client.id as client.name for client in clients", "ng-change"=>"clientChanged(order.client_id)", :required => ""}
       .col-xs-3
-        .btn.btn-primary{"ng-click" => "newClient()"} 新客户
+        .btn.btn-primary.btn-new{"ng-click" => "newClient()"} 新客户
     .row
       .col-md-6
         %label 单价: ({{price_unit}})

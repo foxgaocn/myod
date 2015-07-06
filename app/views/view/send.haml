@@ -9,7 +9,7 @@
           .col-xs-6
             .btn.btn-success.pull-right{"ng-click"=> "package($index)"}  打包
       %table.table.table-striped.table-hover.table-bordered
-        %tr{"ng-repeat" => "item in client.items"}
+        %tr{"ng-repeat" => "item in client.items", "ng-show" => "item.quantity > 0"}
           %td {{item.product_name}} X {{item.quantity}}
   .center
     %h2 {{text}}

@@ -17,6 +17,11 @@ body{
   text-decoration: underline;
 }
 
+.modal-header{
+  padding: 0 15px
+}
+
+
 .myod{
   width: 100%;
   margin: 0 auto;
@@ -26,7 +31,9 @@ body{
   @media 
     only screen and (min-device-width: 680px)
     {
-      // width: 70%;  
+      .modal-header{
+        padding: 15px;
+      }  
     }
 
   header {

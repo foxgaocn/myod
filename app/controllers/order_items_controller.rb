@@ -83,7 +83,10 @@ class OrderItemsController < ApplicationController
   end
 
   def to_be_delivered
-    items = OrderItem.includes(:client, :product).where(user_id: current_user.id, status: 1).group_by(&:client_id)
+    items = OrderItem.includes(:client, :product)
+      .where(user_id: current_user.id, status: 1)
+      .where('quantity > 0')
+      .group_by(&:client_id)
     @items = items.inject ({}){|hash, (k,v)| hash.merge((v[0].client) => v) }
   end
 

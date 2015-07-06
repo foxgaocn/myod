@@ -71,6 +71,10 @@ myod.config(['$routeProvider',
         templateUrl: '/view/report',
         controller: 'ReportCtrl'
       }).
+      when('/contact', {
+        templateUrl: '/view/contact',
+        controller: 'ContactCtrl'
+      }).
       when('/signed_out', {
         controller : function(){
             window.location.replace('/users/sign_in');
