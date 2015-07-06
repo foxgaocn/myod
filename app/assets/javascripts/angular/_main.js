@@ -26,8 +26,14 @@ myod.value('PackageStatus',
 );
 
 myod.value('PriceUnits',
-  [ {code: 0, title: '人民币'},
-    {code: 1, title: '澳元'}]
+  [ {code: 0, title: '澳元'},
+    {code: 1, title: '美元'},
+    {code: 2, title: '人民币'},
+    {code: 3, title: '欧元'},
+    {code: 4, title: '英镑'},
+    {code: 5, title: '日元'},
+    {code: 6, title: '韩元'},
+    {code: 7, title: '新西兰元'},]
 );
 
 

@@ -14,7 +14,7 @@
     %label 单价: ({{getPriceUnit(order.client.price_unit)}})
     %input.form-control{"ng-model" => "order.sale_price", :required => "", :type => "number", :step =>"0.01", :min=>'0'}
     %div{"ng-if"=> "order.status > 0"}
-      %label 采购价: (澳元)
+      %label= "采购价: #{Currency::SUPPORTED_CURRENCIES[current_user.currency][0]}"
       %input.form-control{"ng-model" => "order.buy_price", :required => "", :type => "number", :step =>"0.01", :min=>'0'}
 .modal-footer
   %button.btn.btn-primary{"ng-click" => "ok($event)"} OK

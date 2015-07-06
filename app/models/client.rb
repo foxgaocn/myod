@@ -6,13 +6,6 @@ class Client < ActiveRecord::Base
   validates :user, :name, presence: true
 
   def price_unit_string
-    case price_unit
-    when 0
-      return '人民币'
-    when 1
-      return '澳元'
-    else
-      raise "Multicurrency not supported yet"
-    end
+    Currency::SUPPORTED_CURRENCIES[price_unit][0]
   end
 end

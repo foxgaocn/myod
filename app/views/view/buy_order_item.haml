@@ -14,7 +14,7 @@
       .row
         .col-xs-12
           %label 买价: 
-          %input{"ng-model" => "bought[$index].buy_price", type:"number", step:"0.01", min:"0", "ng-required" => "bought[$index].quantity > 0", "size"=>2} 澳元
+          %input{"ng-model" => "bought[$index].buy_price", type:"number", step:"0.01", min:"0", "ng-required" => "bought[$index].quantity > 0", "size"=>2}=Currency::SUPPORTED_CURRENCIES[current_user.currency][0]
       %hr
 .modal-footer
   %button.btn.btn-primary{"ng-click" => "ok($event)"} OK

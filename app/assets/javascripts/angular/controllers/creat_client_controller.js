@@ -10,7 +10,7 @@ angular.module('myodControllers')
         });
       }
       else{
-        $scope.client={price_unit: PriceUnits[0].code}  
+        $scope.client={price_unit: PriceUnits[2].code}  
       }
 
       
