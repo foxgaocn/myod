@@ -77,8 +77,7 @@ angular.module('myodControllers')
         OrderService.save({order_item: $scope.order}, 
           function() {$scope.reset();}, 
           function(error){
-            $scope.title = '对不起，出错了'
-            $scope.title_class='alert alert-danger'} 
+            $window.alert('抱歉，出错了');} 
           );
       };
 
@@ -88,8 +87,6 @@ angular.module('myodControllers')
           $scope.all_products = [];
         }
         $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status};
-        $scope.title = '添加成功,请继续'
-        $scope.title_class='alert alert-success'
         $scope.total_price = 0
       };
 
