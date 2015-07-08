@@ -32,6 +32,10 @@ angular.module('myodControllers')
         $scope.order.product_id = item.id;
       }
 
+      $scope.productChanged = function(event){
+        $scope.order.product_id = undefined;
+      }
+
       $scope.newClient = function(){
         var modalInstance = $modal.open({
           animation: true,

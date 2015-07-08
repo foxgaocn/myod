@@ -2,7 +2,7 @@
 %section.order
   %form{:novalidate => ""}
     %label 商品名:
-    %input.form-control{"type"=>"text", "ng-model"=>"order.product_name", "typeahead"=>"product as product.name for product in getProducts($viewValue)", "typeahead-on-select"=>"productSelected($item, $model, $label)"}
+    %input.form-control{"type"=>"text", "ng-model"=>"order.product_name", "typeahead"=>"product as product.name for product in getProducts($viewValue)", "typeahead-on-select"=>"productSelected($item, $model, $label)", "ng-change" => "productChanged($event)"}
 
    
     %label 数量:
