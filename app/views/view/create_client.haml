@@ -11,7 +11,7 @@
     %label 身份证号码:
     %input.form-control{"ng-model" => "client.sid"}/
     %label 结算货币:
-    %select.form-control{"ng-model" => "client.price_unit", "ng-options" => "price.code as price.title for price in price_units", :required => ""}
+    %select.form-control{"ng-model" => "client.price_unit", "ng-options" => "price.code as price.title for price in price_units", :required => "", "ng-disabled"=> "isEditing"}
 
 .modal-footer
   %button.btn.btn-primary{"ng-click" => "ok($event)"} OK

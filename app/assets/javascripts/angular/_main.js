@@ -2,7 +2,7 @@
 
 /* App Module */
 
-angular.module('myodControllers',['autocomplete']);
+angular.module('myodControllers',[]);
 angular.module('myodServices',[]);
 
 var myod = angular.module('myod', [

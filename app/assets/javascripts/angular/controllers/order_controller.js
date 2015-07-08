@@ -1,9 +1,6 @@
 angular.module('myodControllers')
-  .controller('OrderCtrl', ['$scope', '$window', '$modal', 'ProductService', 'ClientService', 'OrderService', 'OrderItemStatus',
-    function($scope, $window,  $modal, ProductService, ClientService, OrderService, OrderItemStatus) {
-      $scope.all_products = [];
-      $scope.products = [];
-      $scope.product_ids = [];
+  .controller('OrderCtrl', ['$scope', '$window', '$modal', '$http', 'ProductService', 'ClientService', 'OrderService', 'OrderItemStatus',
+    function($scope, $window,  $modal, $http, ProductService, ClientService, OrderService, OrderItemStatus) {
       $scope.clients = [];
       $scope.order = {quantity: 1, status: OrderItemStatus[0].code};
       $scope.title = '订单录入'
@@ -13,37 +10,26 @@ angular.module('myodControllers')
         $scope.clients = data;
       });
 
-      $scope.updateProducts = function(typed){
+      $scope.getProducts = function(typed){
+        //return [{name:'fsda', id: 34}, {name: 'gggg', id: 23}]
         if(typed == undefined) typed='';
 
         value = typed.trim().toLowerCase();
 
-        if(value.length < 2){
-          $scope.products = [];
-          return;
-        } 
+        if(value.length < 1){
+          return[];
+        }
 
-        ProductService.suggestions({typed: value}, function(data){
-          $scope.products = data.map(function(p){return p.name})
-          $scope.product_ids = data.map(function(p){return p.id})
+        return $http.get('/products/suggestions.json', {
+          params: {typed: value}
+        }).then(function(resp){
+          return resp.data
         })
-
-        // if ($scope.all_products.length == 0){
-        //   ProductService.query(function(data){
-        //     $scope.all_products = data;
-        //   });
-        // }
-        
-        // var match_products = $scope.all_products.filter(function(p){
-        //   return p.name.toLowerCase().indexOf(value) > -1;
-        // })
-        // $scope.products = match_products.map(function(p){return p.name})
-        // $scope.product_ids = match_products.map(function(p){return p.id})
       };
 
-      $scope.selectProduct = function(product){
-        var index = $scope.products.indexOf(product);
-        $scope.order.product_id = $scope.product_ids[index];
+      $scope.productSelected = function(item, model, label){
+        $scope.order.product_name = item.name;
+        $scope.order.product_id = item.id;
       }
 
       $scope.newClient = function(){
@@ -71,9 +57,7 @@ angular.module('myodControllers')
           $window.alert('数据有错误，请先核对数据')
           return;
         }
-        var product_index = $scope.products.indexOf($scope.order.product_name);
-        $scope.order.product_id = $scope.product_ids[product_index]
-
+        
         OrderService.save({order_item: $scope.order}, 
           function() {$scope.reset();}, 
           function(error){
@@ -82,10 +66,6 @@ angular.module('myodControllers')
       };
 
       $scope.reset = function(){
-        if($scope.order.product_id == undefined || $scope.order.product_id == null){
-          //we've created a new product, refresh the product list
-          $scope.all_products = [];
-        }
         $scope.order = {quantity: 1, client_id: $scope.order.client_id, status: $scope.order.status};
         $scope.total_price = 0
       };

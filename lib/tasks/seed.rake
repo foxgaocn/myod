@@ -1,36 +1,12 @@
 task :create_products => :environment do
-    Product.create!({
-      name: "Swiss护肝片120粒",
-      user_id: 3
-    });
-
-    Product.create!({
-      name: "Swiss蔓越莓120粒",
-      user_id: 3
-    });
-
-    Product.create!({
-      name: "Karicare金装一段",
-      user_id: 3
-    });
-
-    Product.create!({
-      name: "Karicare金装二段",
-      user_id: 3
-    });
-
-    Product.create!({
-      name: "Karicare金装三段",
-      user_id: 3
-    });
-
-    Product.create!({
-      name: "Karicare金装四段",
-      user_id: 3
-    });
-
-    Product.create!({
-      name: "羊奶皂",
-      user_id: 3
-    });
+    user_id = User.find_by_email('guest@test.com').id
+    File.open(File.join(Rails.root, 'db', 'prod.txt')).read.each_line do |line|
+      line = line.strip
+      next if line == ''
+      
+      Product.create!({
+        name: line.strip,
+        user_id: user_id
+      });
+    end
   end

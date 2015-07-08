@@ -2,7 +2,9 @@
 %section.order
   %form{:novalidate => ""}
     %label 商品名:
-    %autocomplete{"attr-input-class" => "form-control", "attr-placeholder" => "", :data => "products", "ng-model" => "order.product_name", "on-select" => "selectProduct", "on-type" => "updateProducts"}
+    %input.form-control{"type"=>"text", "ng-model"=>"order.product_name", "typeahead"=>"product as product.name for product in getProducts($viewValue)", "typeahead-on-select"=>"productSelected($item, $model, $label)"}
+
+   
     %label 数量:
     %input.form-control{"ng-model" => "order.quantity", :required => "", :type => "number", :min =>'1', "ng-change"=>"quantity_changed(order.quantity)", "ng-click"=>"quantity_clicked()", "ng-blur"=>"quantity_blur()"}/
     %label 客户:

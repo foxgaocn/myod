@@ -10,7 +10,7 @@
           %th 包装数量
         %tr{"ng-repeat" => "item in items"}
           %td {{item.product_name}}
-          %td 
+          %td
             %select{"ng-model" => "package.items[$index].quantity", "ng-options" => "value for value in item.values", :required => ""}}
       .panel-footer
         .row

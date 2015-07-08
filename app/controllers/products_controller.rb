@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   def suggestions
-    suggestiongs = Product.select(:id, :name).where("name ilike ?", "%#{params[:typed]}%").limit(8)
+    suggestiongs = Product.select(:id, :name).where("name ilike ?", "%#{params[:typed]}%").limit(10)
     render json: suggestiongs.to_json
   end
 

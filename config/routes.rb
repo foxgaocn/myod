@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get 'main/try_it' => 'main#try_it', as: :try_it
 
+  get 'stat' => 'stat#stat'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
