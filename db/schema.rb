@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706214100) do
+ActiveRecord::Schema.define(version: 20150709214101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,12 +42,12 @@ ActiveRecord::Schema.define(version: 20150706214100) do
     t.integer  "user_id"
     t.integer  "quantity"
     t.integer  "status"
-    t.decimal  "buy_price",       precision: 5, scale: 2
-    t.decimal  "sale_price",      precision: 5, scale: 2
+    t.float    "buy_price"
+    t.float    "sale_price"
     t.integer  "sale_price_unit"
     t.integer  "origination_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "package_id"
   end
 
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20150706214100) do
     t.integer  "user_id"
     t.integer  "number"
     t.string   "tracking"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.decimal  "shipping_fee", precision: 5, scale: 2
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.float    "shipping_fee"
     t.integer  "status"
   end
 
